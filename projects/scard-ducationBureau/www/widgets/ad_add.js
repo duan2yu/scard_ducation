@@ -4,7 +4,27 @@
 
 define(function (require, exports, module) {
     module.exports.init = function (element, callback) {
-                  require('qiniu');
+            function getOs()
+            {
+                    var OsObject = "";
+                    if(navigator.userAgent.indexOf("MSIE")>0) {
+                            return "MSIE";
+                    }
+                    if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+                            return "Firefox";
+                    }
+                    if(isSafari=navigator.userAgent.indexOf("Safari")>0) {
+                            return "Safari";
+                    }
+                    if(isCamino=navigator.userAgent.indexOf("Camino")>0){
+                            return "Camino";
+                    }
+                    if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){
+                            return "Gecko";
+                    }
+
+            }
+            require('qiniu');
                   var image_key=null;
                    var ui=require('/js/modules/qiniu/demo/js/ui.js');
 
@@ -44,7 +64,8 @@ define(function (require, exports, module) {
             $('#starttime').valid();
         });
         $('#endtime').datepicker({format:'yyyy-mm-dd',autoclose:true});
-        $('#endtime').bind('change',function()
+
+       $('#endtime').bind('change',function()
         {
             $('#endtime').valid();
         });
@@ -62,31 +83,47 @@ define(function (require, exports, module) {
                     return this.optional(element) || b;
             });
 
-            $('#ad-form').validateEx({
-                    rules: {
-                            title:
-                            {
-                                    maxlength:100
+            if(getOs()=="Safari")
+            {
+                    $('#ad-form').validateEx({
+                            rules: {
+                                    title:
+                                    {
+                                            maxlength:100
+                                    },
+                                    url: {
+                                            url:'aa'
+                                    }
+                            }});
+            }
+            else{
+                    $('#ad-form').validateEx({
+                            rules: {
+                                    title:
+                                    {
+                                            maxlength:100
+                                    },
+                                    url: {
+                                            url:'aa'
+                                    }
+                                             ,
+                                     endtime:
+                                     {
+                                     required:true,
+                                     timeRangeEnd:'aa'
+                                     },
+                                     starttime:
+                                     {
+                                     required:true,
+                                     timeRangeStart:'vv'
+                                     }
                             },
-                            url: {
-                                    url:'aa'
-                            },
-                            endtime:
-                            {
-                                    required:true,
-                                    timeRangeEnd:'aa'
-                            },
-                            starttime:
-                            {
-                                    required:true,
-                                    timeRangeStart:'vv'
-                            }
-                    },
-                    messages: {
-                            endtime:{timeRangeEnd:$.validator.format("结束时间不能小于开始时间"),required:$.validator.format("请输入截至时间")},
-                            starttime:{timeRangeStart:$.validator.format("开始时间不能大于结束时间"),required:$.validator.format("请输入截至时间")}
+                            messages: {
+                                    endtime:{timeRangeEnd:$.validator.format("结束时间不能小于开始时间"),required:$.validator.format("请输入截至时间")},
+                                    starttime:{timeRangeStart:$.validator.format("开始时间不能大于结束时间"),required:$.validator.format("请输入截至时间")}
 
-                    }});
+                            }});
+            }
 
 
 
@@ -143,6 +180,30 @@ define(function (require, exports, module) {
 
                     if($('#ad-form').valid())
                 {
+                        if($("#starttime").val()=="")
+                        {
+                                $spa.alert("错误","生效时间不能为空",function()
+                                {
+                                        $("#starttime").focus();
+                                });
+                                return;
+                        }
+                        if($("#endtime").val()=="")
+                        {
+                                $spa.alert("错误","结束时间不能为空",function()
+                                {
+                                        $("#endtime").focus();
+                                });
+                                return;
+                        }
+                        if($("#starttime").val()>$("#endtime").val())
+                        {
+                                $spa.alert("错误","开始时间不能大于结束时间",function()
+                                {
+                                        $("#endtime").focus();
+                                });
+                                return;
+                        }
                         $("#test").addClass('collapse');
                     //    $('#submitBtn').button('loading');
                         var param = formUtil.argsFrom('#ad-form');
