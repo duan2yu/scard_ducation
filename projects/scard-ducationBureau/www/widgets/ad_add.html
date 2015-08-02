@@ -1,0 +1,174 @@
+<script src="/js/modules/Jcrop/js/jquery.Jcrop.js"></script>
+<script type="text/javascript">
+</script>
+
+<link rel="stylesheet" href="/js/modules/Jcrop/css/jquery.Jcrop.css" type="text/css" />
+
+<style type="text/css">
+/* Apply these styles only when #preview-pane has
+been placed within the Jcrop widget */
+.jcrop-holder #preview-pane {
+display: block;
+position: absolute;
+z-index: 2000;
+top: 10px;
+right: -250px;
+padding: 6px;
+border: 1px rgba(0,0,0,.4) solid;
+background-color: white;
+
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+
+-webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* The Javascript code will set the aspect ratio of the crop
+area based on the size of the thumbnail preview,
+specified here */
+#preview-pane .preview-container {
+width: 200px;
+height: 150px;
+overflow: hidden;
+}
+
+</style>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="page-header" id="nav"></div>
+        <div class="row-fluid">
+            <form id="ad-form" class="am-form am-form-horizontal" onsubmit="return false">
+
+
+                    <div class='span12 box'>
+                        <div class="box-content box-double-padding">
+                            <fieldset>
+                    <!-- <div class='span3'>
+                               <div class='lead'>
+                                   <i class='icon-signin text-contrast'></i>
+                                   新增广告
+                               </div>
+                               <small class='muted'>请填写基本资料,并且添加图片进行剪裁</small>
+                           </div>-->
+                                <div class='span7 offset1'>
+                                    <div class="control-group">
+                                        <label for="title" class="control-label">广告标题</label>
+
+                                        <div class="controls">
+                                            <div class='span12'><input type="text" arg id="title" placeholder="请输入广告标题"
+                                                                       required data-msg-required="请输入广告标题"></div>
+                                        </div>
+                                        <div class="text-left text-error" error-for="title"></div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="url" class="control-label">跳转URL</label>
+
+                                        <div class="controls">
+                                            <div class='span12'><input type="text" arg id="url" placeholder="请输入跳转URL"
+                                                                       required data-msg-required="请输入跳转URL"></div>
+                                        </div>
+                                        <div class="text-left text-error" error-for="url"></div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label for="startTime" class="control-label">生效时间</label>
+
+                                        <div class="controls">
+                                            <input type="text" arg id="starttime" readonly placeholder="请选择生效时间"
+                                                  >
+                <span class="btn-group" style="margin-top: -10px">
+                    <button class="btn btn-default" type="button" onclick="$('#starttime').focus();"><span
+                            class="icon-calendar"></span></button>
+                    <button class="btn btn-default" type="button"
+                            onclick="$('#starttime').val('');$('#starttime').trigger('change');"><span
+                            class="icon-eraser"></span></button>
+                </span>
+                                        </div>
+                                        <div class="text-left text-error" error-for="starttime"></div>
+                                    </div>
+
+
+                                    <div class="control-group">
+                                        <label for="endtime" class="control-label">截至时间</label>
+
+                                        <div class="controls">
+                                            <input type="text" arg id="endtime" readonly placeholder="请选择截至时间" >
+                                <span class="btn-group" style="margin-top: -10px">
+                                    <button class="btn btn-default" type="button" onclick="$('#endtime').focus();"><span
+                                            class="icon-calendar"></span></button>
+                                    <button class="btn btn-default" type="button"
+                                            onclick="$('#endtime').val('');$('#endtime').trigger('change');"><span
+                                            class="icon-eraser"></span></button>
+                                </span>
+                                        </div>
+                                        <div class="text-left text-error" error-for="endtime"></div>
+                                    </div>
+                                    <div class="control-group fileupload-buttonbar" id="container">
+                                                      <span class="btn btn-success fileinput-button">
+                                                          <i class="icon-plus icon-white"></i>
+                                                          <span>选择图片</span>
+                                                          <input  name="file"  type="file"  id="pickfiles" >
+                                                             <input type="hidden"  required id="attachment"
+                                                                     data-msg-required="请选择一个图片"/>
+                                                        </span>
+                                                    <div class="text-left text-error" error-for="attachment"></div>
+                                    </div>
+
+                                    <div class="control-group" id="lastImage" style="display: none">
+                                        <div class='span12'>
+                                            <img src=""  style="width:200px;height:150px">
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </fieldset>
+
+                            <hr class='hr-normal'/>
+
+                            <fieldset class="collapse"  id="test">
+
+                                <div class="span8 offset1">
+
+                                    <img  src="" id="target" alt="正在加载图片"  />
+
+                                        <div id="preview-pane">
+                                            <div class="preview-container">
+                                                <img   id="preview" src="" class="jcrop-preview" alt="正在创建预览" />
+                                            </div>
+                                        </div>
+
+
+                                </div>
+                        </fieldset>
+
+
+                            <div class="control-group  offset3">
+                                <div class="controls">
+                                    <div class="span12">
+                                        <button type="button" id="submitBtn" class="btn btn-primary btn-lg" onclick="$module.saveOrUpdate()"><span class="icon-save"></span> 保存</button>
+                                        <button type="button" id="cancleBtn" class="btn btn-info btn-lg" onclick="$module.cancle()"><span class="icon-mail-reply"></span>返回</button>
+
+                    <span class="text-left text-error" id="errorAlert" style="display: none;">
+                            表单不完整或填写格式错误！
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                          </div>
+                    </div>
+            </form>
+    </div>
+</div>
+</div>
+

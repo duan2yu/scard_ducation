@@ -1,0 +1,30 @@
+#!/bin/sh 
+#下载文件实际存放地址
+echo '-------------begin------------'
+appAddress='http://m.china-ccms.com/CCMS/test.jsp'
+appName='CCMS'
+fullfile='./full.text'
+temp='1'
+#取出文件中存放的响应header的Modify时间
+#header=`head -4 $fullfile|tail -1|sed -e s/Last-Modified/If-Modified-Since/g|sed -e s/GMT^M/GMT/g`
+#echo $header
+#下载文件
+wget -t 3 -O $fullfile  $appAddress
+#下载文件存在并且文件大小大于100则移动临时文件到工作目录，304返回的时候有一个空文件，所以不能只做文件是否存在判断
+if [  "$?" = "0" ] && [ -e "$fullfile" ]  && [ `du -s $fullfile | awk '{print $1}'` -gt 0 ]; then
+{
+        echo $appName 'wget success'
+	temp=`cat $fullfile |grep "result"|awk '{print $2}'`;
+	if [ "$temp" -eq 1 ];then
+	{
+		echo date:$appName 'is OK'
+	}
+	else
+	echo $appName 'datasouce fail,restart '$appName
+	fi
+}
+else
+       echo 'wget fail,restart ' $appName
+fi
+echo '-------------end -----------'
+

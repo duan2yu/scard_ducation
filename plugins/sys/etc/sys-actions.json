@@ -1,0 +1,14 @@
+{
+        "sys": [
+                {
+                        "action-name": "la",
+                        "action-class": "easynode.plugin.sys.actions.ActionList",
+                        "description" : "查询所有的action"
+                },
+                {
+                        "action-name" : "ad",
+                        "action-class": "easynode.plugin.sys.actions.ActionDetail",
+                        "description" : "查询action的详细信息"
+                }
+        ]
+}

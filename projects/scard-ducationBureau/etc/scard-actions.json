@@ -1,0 +1,10 @@
+{
+        "qiniu": [
+                {
+                        "action-name": "upToken",
+                        "action-class": "easynode.project.scard.upToken",
+                        "description" : "获取七牛帐号校验码",
+                        "enabled" : true
+                }
+        ]
+}

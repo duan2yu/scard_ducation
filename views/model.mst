@@ -1,0 +1,49 @@
+var assert = require('assert');
+var logger = using('easynode.framework.Logger').forFile(__filename);
+var GenericObject = using('easynode.GenericObject');
+var ModelField = using('easynode.framework.mvc.ModelField');
+var util = require('util');
+var S = require('string');
+var _ = require('underscore');
+
+(function () {
+/**
+* Class Model
+*
+* @class {{path}}.{{name}}Model
+* @extends easynode.framework.mvc.Model
+* @since 0.1.0
+* @author duansj
+* */
+class {{name}}Model extends Model {
+/**
+* 构造函数。
+*
+* @method 构造函数
+* @since 0.1.0
+* @author duansj
+* */
+constructor() {
+    super(schema, view);
+}
+
+/**
+* 定义模型字段，子类可以覆盖该函数以在创建子类模型实例时即定义好字段。
+*
+* @method defineFields
+* @abstract
+* @protected
+* @since 0.1.0
+* @author zlbbq
+* */
+defineFields () {
+
+}
+
+getClassName() {
+return EasyNode.namespace(__filename);
+}
+}
+
+module.exports ={{name}}Model ;
+})();

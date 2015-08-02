@@ -1,0 +1,120 @@
+<div class="row-fluid">
+    <div class="span12">
+        <div class="page-header" id="nav"></div>
+        <div class="row-fluid">
+            <form id="message-form" class="am-form am-form-horizontal" onsubmit="return false">
+
+                <input type="hidden" id="domain" value="<%= domain %>">
+                <input type="hidden" id="uptoken_url" value="<%= uptoken_url %>">
+
+                    <div class='span12 box'>
+                        <div class="box-content box-double-padding">
+                            <fieldset>
+                                <div class='span12 offset1'>
+                                    <div class="control-group">
+                                        <label for="title" class="control-label">信息类型</label>
+
+                                        <div class="controls">
+                                            <div class='span12'>
+                                                <input type="radio"  name="type"  value="1" checked="true">公告&nbsp
+                                                <input type="radio"  name="type"  value="2">通知&nbsp
+                                                <input type="radio"  name="type"  value="3" > 新闻&nbsp
+
+                                            </div>
+                                        </div>
+                                        <div class="text-left text-error" error-for="title"></div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="title" class="control-label">标题</label>
+
+                                        <div class="controls">
+                                            <div class='span12'><input type="text" arg id="title" placeholder="请输入标题" style="width:500px"
+                                                                       required data-msg-required="请输入标题"></div>
+                                        </div>
+                                        <div class="text-left text-error" error-for="title"></div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="contents" class="control-label">内容</label>
+
+                                        <div class="controls">
+                                            <div class='span12'>
+                                                <textarea  id="contents" style="font-size: 12px; width: 531px; height: 121px;" aria-invalid="false"
+                                                           placeholder="请输入内容"
+                                                           required data-msg-required="请输入内容"
+                                                        ></textarea>
+                                            </div>
+                                        <span class="text-left text-error" error-for="contents"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+                  </form>
+
+                            <hr class='hr-normal'/>
+
+                            <fieldset   id="test">
+
+                                <div class="span6 offset1">
+                                    <div class="control-group">
+                                        <label for="pickfiles" class="control-label">图片地址
+
+                                            <span  id="container">
+                                                 <button class="btn-success" id="pickfiles">
+                                                     <i class="icon-plus icon-white"></i>
+                                                     选择图片
+                                                 </button>
+                                        <button class="btn-primary"　id="addButton" onclick="$module.addColumn()" >
+                                            <i class="icon-plus"></i>
+                                            增加
+                                        </button>
+                                        <button class="btn-danger" id="deleteButton" onclick="$module.deleteColumn()">
+                                            <i class="icon-remove"></i>
+                                            删除
+                                        </button>
+
+
+                                                </span>
+
+
+                                        </label>
+
+                                        <div class="controls">
+                                            <div class='span12' >
+                                                <table id="images">
+                                                   <!-- <tr>
+                                                        <td>
+                                                            <input type="text"  style="width:500px">
+                                                        </td>
+                                                    </tr>-->
+                                                </table>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                        </fieldset>
+
+
+                            <div class="control-group offset2">
+                                <div class="controls">
+                                    <div class="span12">
+                                        <button type="button" id="submitBtn" class="btn btn-primary btn-lg" onclick="$module.saveOrUpdate(1)"><span class="icon-save"></span> 保存</button>
+                                        <button type="button" id="publishBtn" class="btn btn-info btn-lg" onclick="$module.saveOrUpdate(2)"><span class="icon-pushpin"></span> 发布</button>
+                                        <button type="button" id="cancleBtn" class="btn btn-default btn-lg" onclick="$module.cancle()"><span class="icon-mail-reply"></span> 返回</button>
+                    <span class="text-left text-error" id="errorAlert" style="display: none;">
+                            表单不完整或填写格式错误！
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                          </div>
+                    </div>
+    </div>
+</div>
+</div>
+

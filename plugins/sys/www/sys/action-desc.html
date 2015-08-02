@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>action 参数表</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.4/css/bootstrap.min.css">
+    <script src="../js/lib/jquery-1.11.3.min.js"></script>
+    <script src="../js/lib/angular-1.3.16.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="js/action-desc.js"></script>
+</head>
+<body>
+<div id="actionName" class="h1 text-center">actionName</div>
+
+
+<div class="container">
+
+    <div class="tab-content col-md-12">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <table class="table table-bordered table-hover　" ng-controller="ActionDesc">
+                <thead>
+                <tr>
+                    <th class="col-md-2">参数名</th>
+                    <th class="col-md-３">参数类型</th>
+                    <!--<th class="col-md-２">参数长度</th>-->
+                    <th class="col-md-7">参数描述</th>
+                    <!--<th class="col-md-２">参数校验</th>-->
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="param in params">
+                    <td>{{param.name}}</td>
+                    <td>{{param.type}}</td>
+                    <!--<td>{{param.length}}</td>-->
+                    <td>{{param.comment}}</td>
+                    <!--<td>{{param.validations}}</td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <div class="col-md-2 col-md-offset-5"><a class="btn btn-default" href="javascript:window.close()" role="button"><i class="glyphicon glyphicon-remove-circle"></i>关闭窗口</a></div>
+</div>
+</body>
+
+</html>

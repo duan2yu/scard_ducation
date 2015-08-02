@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<script src="./js/lib/jquery-1.11.3.min.js"></script>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $.getJSON('/queryOnLineTerminals',{},function(result)
+                {
+                    for(var i=0;i<result.length;i++)
+                    {
+                        $("#tid").append('<option value='+result[i]+'>'+result[i]+'</option>')
+                    }
+                })
+
+            });
+        function  sendCmds()
+        {
+            var tid=$("#tid").val();
+            var cmd=$("#cmd").val();
+            if(!tid||tid.length==0)
+            {
+                alert('请先选择一个终端!');
+                return;
+            }
+            if(!cmd||cmd.length==0)
+            {
+                alert('请选择一个指令!');
+                return;
+            }
+            $("#result").html("正在下发配置...");
+            var param={
+                tid:tid,
+                cmd:cmd
+            }
+            $.getJSON('/control',param,function(result)
+            {
+               $("#result").html(JSON.stringify(result) );
+            })
+
+
+        }
+
+
+            function  SynTerminalConf()
+            {
+
+                var tid=$("#tid").val();
+                var cmd=$("#cmd").val();
+                if(!tid||tid.length==0)
+                {
+                    alert('请先选择一个终端!');
+                    return;
+                }
+                var param={
+                    tid:tid
+                }
+                $("#result").html("正在同步...");
+                $.getJSON('/SynTerminalConf',param,function(result)
+                {
+                    $("#result").html(JSON.stringify(result) );
+                })
+
+
+            }
+    </script>
+
+
+</head>
+<body>
+    <select name="tid" id="tid">
+        <option value="">请选择一个终端</option>
+
+    </select>
+    <select  name="cmd" id="cmd" value="AT&VE1">
+        <option value="AT&VE1">AT&VE1</option>
+        <option value="AT$AREG=0">AT$AREG=0</option>
+        <option value="AT$TRS=1,2,10;AT$HRS=1,35,75;AT$TRS=2,2,10;AT$HRS=2,35,75">AT$TRS=1,2,10;AT$HRS=1,35,75;AT$TRS=2,2,10;AT$HRS=2,35,75</option>
+        <option value="AT$THA=1,0,0;AT$THA=2,-1,0">AT$THA=1,0,0;AT$THA=2,-1,0</option>
+        <option value="AT$CHANNELS=2">AT$CHANNELS=2</option>
+        <option value="AT&w">AT&w</option>
+        <option value="AT$AREG=2"> AT$AREG=2</option>
+        <option value="AT$RESET"> AT$RESET</option>
+        <option value='AT&PTH="镇江康飞","浙A00000"'> AT&PTH="镇江康飞","浙A00000"</option>
+    </select>
+    <input type="submit"  onclick="sendCmds()">
+    <input type="button" value="同步参数到终端"  onclick="SynTerminalConf()">
+    <br />
+    <textarea  id="result" style="width:50%;height:400px">
+
+   </textarea>
+</body>
+</html>

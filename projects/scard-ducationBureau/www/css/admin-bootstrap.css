@@ -1,0 +1,14 @@
+/**管理后台的样式*/
+
+* {
+    font-family: '微软雅黑';
+}
+
+pre {
+    border : 0px;
+    background-color: #FFFFFF;
+}
+
+.style-footer {
+    margin-top: -20px;
+}

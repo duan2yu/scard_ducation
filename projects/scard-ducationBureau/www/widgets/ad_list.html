@@ -1,0 +1,90 @@
+
+<div class="row-fluid">
+    <div class="span12">
+
+        <div class="page-header" id="nav">
+
+        </div>
+        <div class="row-fluid">
+            <div id="ba">
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12 box bordered-box orange-border margin-left margin-right" style="margin-bottom:0;">
+                <div class="box-content box-no-padding">
+                    <div class="responsive-table">
+                        <div >
+                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+
+                                <table class="table table-bordered table-hover table-striped" style="margin-bottom:0;" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="" style="width:30%"  >广告标题</th>
+                                        <th class="" style="width:12%" >起始时间</th>
+                                        <th class="" style="width:12%" >截至时间</th>
+                                        <th class="" style="width:5%">状态</th>
+                                        <th class=""></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody role="alert" aria-live="polite" aria-relevant="all" id="userDG">
+                                    </tbody>
+                                </table>
+                                <div class="row-fluid" id="pagination">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<textarea id="tplDG" class="hidden">
+    {{#data}}
+    <tr class="odd">
+        <td>{{title}}</td>
+        <td class=" ">{{#fmt.datetime}}{{starttime}}{{/fmt.datetime}}</td>
+        <td class=" ">{{#fmt.datetime}}{{endtime}}{{/fmt.datetime}}</td>
+        <td class=" ">
+            {{#fmt.when}}{{states}}==0,
+            <span class="label label-important">已禁用</span>
+            {{/fmt.when}}
+            {{#fmt.when}}{{states}}==1,
+            <span class="label label-success">已启用</span>
+            {{/fmt.when}}
+
+        </td>
+        <td class=" ">
+            <div class="text-left">
+                <button onclick="$module.adDetail({{id}});" class="btn btn-primary btn-xs"><span class="icon-edit"></span>
+                    编辑
+                </button>
+                <button onclick="$module.deleteAd('{{id}}','{{title}}');" class="btn btn-danger btn-xs"><span class="icon-remove"></span>
+                    删除
+                </button>
+                {{#fmt.when}}{{states}}==0,
+                <button onclick="$module.adLock({{id}}, '1');" class="btn btn-success btn-xs hide-sm-only"><span
+                        class="icon-unlock"></span> 启用
+                </button>
+                {{/fmt.when}}
+                {{#fmt.when}}{{states}}==1,
+                <button onclick="$module.adLock({{id}}, '0');" class="btn btn-default btn-xs  hide-sm-only"><span
+                        class="icon-lock"></span> 禁用
+                </button>
+                {{/fmt.when}}
+            </div>
+        </td>
+    </tr>
+    {{/data}}
+    {{^data}}
+    <tr><td colspan="8" class="text-center">没有查到数据</td></tr>
+    {{/data}}
+</textarea>
+
+
+
+

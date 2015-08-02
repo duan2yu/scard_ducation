@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>教育局管理系统</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<!--[if lt IE 9]>
+<script src='./js/modules/flatty/assets/javascripts/html5shiv.js' type='text/javascript'></script>
+<![endif]-->
+<link href='./js/modules/flatty/assets/stylesheets/bootstrap/bootstrap.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<link href='./js/modules/flatty/assets/stylesheets/bootstrap/bootstrap-responsive.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / jquery ui -->
+<link href='./js/modules/flatty/assets/stylesheets/jquery_ui/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<link href='./js/modules/flatty/assets/stylesheets/jquery_ui/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / switch buttons -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css' media='all'
+      rel='stylesheet' type='text/css'/>
+<!-- / xeditable -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/xeditable/bootstrap-editable.css' media='all'
+      rel='stylesheet' type='text/css'/>
+<link href='/js/modules/flatty/assets/stylesheets/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / wysihtml5 (wysywig) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / jquery file upload -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all'
+      rel='stylesheet' type='text/css'/>
+<!-- / full calendar -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/fullcalendar/fullcalendar.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / select2 -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/select2/select2.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / mention -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/mention/mention.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / tabdrop (responsive tabs) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/tabdrop/tabdrop.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / jgrowl notifications -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/jgrowl/jquery.jgrowl.min.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / datatables -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/datatables/bootstrap-datatable.css' media='all'
+      rel='stylesheet' type='text/css'/>
+<!-- / dynatrees (file trees) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/dynatree/ui.dynatree.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / color picker -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/bootstrap_colorpicker/bootstrap-colorpicker.css' media='all'
+      rel='stylesheet' type='text/css'/>
+<!-- / datetime picker -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css'
+      media='all' rel='stylesheet' type='text/css'/>
+<!-- / daterange picker) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css'
+      media='all' rel='stylesheet' type='text/css'/>
+<!-- / flags (country flags) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/flags/flags.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / slider nav (address book) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/slider_nav/slidernav.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / fuelux (wizard) -->
+<link href='./js/modules/flatty/assets/stylesheets/plugins/fuelux/wizard.css' media='all' rel='stylesheet'
+      type='text/css'/>
+<!-- / flatty theme -->
+<link href='./js/modules/flatty/assets/stylesheets/light-theme.css' id='color-settings-body-color' media='all'
+      rel='stylesheet' type='text/css'/>
+<!-- / demo -->
+<link href='./js/modules/flatty/assets/stylesheets/demo.css' media='all' rel='stylesheet' type='text/css'/>
+<!--/pluload-->
+<link rel="stylesheet" href="./js/modules/plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css" type="text/css" />
+<style>
+    .p-dashboard-foot {
+        margin-top: -20px;
+    }
+    .menuIcon{width: 25px;}
+    ul .menuIcon{margin-right:10px}
+    li li>a>.menuIcon{margin-left:10px}
+</style>
+
+
+<body class='contrast-dark '>
+<header>
+    <div class='navbar'>
+        <div class='navbar-inner'>
+            <div class='container-fluid'>
+                <a class='brand' href='#home'>
+                    <i class='icon-heart-empty'></i>
+                    <span class='hidden-phone'>教育局管理系统</span>
+                </a>
+                <a class='toggle-nav btn pull-left' href='#'>
+                    <i class='icon-reorder'></i>
+                </a>
+            <ul class='nav pull-right'>
+                    <li class='dropdown blue'>
+                        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                            <span class='user-name hidden-phone'>欢迎您，管理员</span>
+                            <b class='caret'></b>
+                        </a>
+                       <ul class='dropdown-menu'>
+                           <!-- <li>
+                                <a href='user_profile.html'>
+                                    <i class='icon-user'></i>
+                                    用户信息
+                                </a>
+                            </li>
+                            <li>
+                                <a href=''>
+                                    <i class='icon-cog'></i>
+                                    个人设置
+                                </a>
+                            </li>
+                            <li class='divider'></li>-->
+                            <li>
+                                <a href='javascript:logout();'>
+                                    <i class='icon-signout'></i>
+                                    注销登录
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
+                       method="get"/>
+                 <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
+                 <button class="btn btn-link icon-search" name="button" type="submit"></button>
+                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="搜索..."
+                        type="text" value=""/>
+                </form>-->
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id='wrapper'>
+    <div id='main-nav-bg'></div>
+    <nav id='main-nav'>
+        <div class='navigation'>
+            <ul class='nav nav-stacked'>
+                <li class='active'>
+                    <a href='#home'>
+                        <i class='icon-dashboard'></i>
+                        <span>主页</span>
+                    </a>
+                </li>
+                <li class=''>
+                    <a class='dropdown-collapse'>
+                        <i class='icon-edit'></i>
+                        <span>广告管理</span>
+                        <i class='icon-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='#ad_add'>
+                                <i class='icon-caret-right'></i>
+                                <span>发广告</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='#ad_list'>
+                                <i class='icon-caret-right'></i>
+                                <span>广告列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class=''>
+                    <a class='dropdown-collapse'>
+                        <i class='icon-edit'></i>
+                        <span>发布管理</span>
+                        <i class='icon-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='#message_add'>
+                                <i class='icon-caret-right'></i>
+                                <span>发布信息</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='#message_list?type=1'>
+                                <i class='icon-caret-right'></i>
+                                <span>公告列表</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='#message_list?type=2'>
+                                <i class='icon-caret-right'></i>
+                                <span>通知列表</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='#message_list?type=3'>
+                                <i class='icon-caret-right'></i>
+                                <span>新闻列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               <!-- <li class='active'>
+                    <a href='index.html'>
+                        <i class='icon-dashboard'></i>
+                        <span>管理平台首页</span>
+                    </a>
+                </li>
+                <!--<li class="">-->
+                    <!--<a href="#" class="dropdown-collapse in">-->
+                        <!--<i class="icon-edit"></i>-->
+                        <!--<span>表单</span>-->
+                        <!--<i class="icon-angle-down angle-down"></i>-->
+                    <!--</a>-->
+                    <!--<ul class="nav nav-stacked in" style="display: none;">-->
+                        <!--<li class="">-->
+                            <!--<a href="form_styles.html">-->
+                                <!--<i class="icon-caret-right"></i>-->
+                                <!--<span>Form styles and features</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="">-->
+                            <!--<a href="form_components.html">-->
+                                <!--<i class="icon-caret-right"></i>-->
+                                <!--<span>Form components</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="">-->
+                            <!--<a href="validations.html">-->
+                                <!--<i class="icon-caret-right"></i>-->
+                                <!--<span>Validations</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="">-->
+                            <!--<a href="wizard.html">-->
+                                <!--<i class="icon-caret-right"></i>-->
+                                <!--<span>Wizard</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </nav>
+
+    <section id="content" class="container-fluid">
+    </section>
+
+</div>
+<footer class="container-fluid p-dashboard-foot">
+    <hr>
+    <p class="text-center">Copyright © 2014-2025 深圳市展华科技有限公司.</p>
+</footer>
+
+<textarea id="_tpl_pagination" class="hidden">
+    <div class="span6">共{{rows}}条记录，{{pages}}页，每页{{rpp}}条</div>
+    <div class="span6 text-right">
+        <div class="dataTables_paginate paging_bootstrap pagination pagination-small">
+        <ul>
+            <!-- 上一组 -->
+            {{#view.ppre}}
+            <li class="prev"><a href="javascript:{{callback}}({{view.ppre}});">«</a></li>
+            {{/view.ppre}}
+            {{^view.ppre}}
+            <li class="prev disabled" ><a href="javascript:void(0);">«</a></li>
+            {{/view.ppre}}
+
+            <!-- 组内页面 -->
+            {{#view.p0}}
+            <li class="{{#view.pc0}}active{{/view.pc0}}"><a href="javascript:{{callback}}({{view.p0}});">{{view.p0}}</a></li>
+            {{/view.p0}}
+            {{#view.p1}}
+            <li class="{{#view.pc1}}active{{/view.pc1}}"><a href="javascript:{{callback}}({{view.p1}});">{{view.p1}}</a></li>
+            {{/view.p1}}
+            {{#view.p2}}
+            <li class="{{#view.pc2}}active{{/view.pc2}}"><a href="javascript:{{callback}}({{view.p2}});">{{view.p2}}</a></li>
+            {{/view.p2}}
+            {{#view.p3}}
+            <li class="{{#view.pc3}}active{{/view.pc3}}"><a href="javascript:{{callback}}({{view.p3}});">{{view.p3}}</a></li>
+            {{/view.p3}}
+            {{#view.p4}}
+            <li class="{{#view.pc4}}active{{/view.pc4}}"><a href="javascript:{{callback}}({{view.p4}});">{{view.p4}}</a></li>
+            {{/view.p4}}
+
+            <!-- 下一组 -->
+            {{#view.pnext}}
+            <li><a href="javascript:{{callback}}({{view.pnext}});">»</a></li>
+            {{/view.pnext}}
+            {{^view.pnext}}
+            <li class="disabled"><a href="javascript:void(0);">»</a></li>
+            {{/view.pnext}}
+        </ul>
+            </div>
+    </div>
+</textarea>
+
+<div class="modal hide fade" id="_alert">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 title>对话框标题</h3>
+    </div>
+    <div class="modal-body">
+        <p text>One fine body…</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:undefined" onclick="$(this).parents('.modal').modal('hide')" class="btn" close>关闭</a>
+        <a href="javascript:undefined" class="btn btn-primary" primary>确定</a>
+    </div>
+</div>
+<div class="modal-backdrop hide fade"></div>
+<!-- 脚本区 BEGIN -->
+<script src="./js/sea.js?v=$RELEASE_VERSION$"></script>
+<script src="./js/init.js?v=$RELEASE_VERSION$"></script>
+<script>
+var deps = ['jquery', 'flatty', 'spa', 'json-api', 'mustache', 'dateformat',  '/js/basic/basic.js'];
+app.use(deps, function ($, flatty, spa, jsonAPI, mustache, dateformat, basic) {
+
+    //Setup navigation events
+    function _setupNavEvents() {
+        var body, content, nav, nav_closed_width, nav_open, nav_toggler;
+
+        nav_toggler = $("header .toggle-nav");
+        nav = $("#main-nav");
+        content = $("#content");
+        body = $("body");
+        nav_closed_width = 50;
+        nav_open = body.hasClass("main-nav-opened") || nav.width() > nav_closed_width;
+        $("#main-nav .dropdown-collapse").on("click", function(e) {
+            var link, list;
+
+            e.preventDefault();
+            link = $(this);
+            list = link.parent().find("> ul");
+            if (list.is(":visible")) {
+                if (body.hasClass("main-nav-closed") && link.parents("li").length === 1) {
+                    false;
+                } else {
+                    link.removeClass("in");
+                    list.slideUp(300, function() {
+                        return $(this).removeClass("in");
+                    });
+                }
+            } else {
+                link.addClass("in");
+                list.slideDown(300, function() {
+                    return $(this).addClass("in");
+                });
+            }
+            return false;
+        });
+        nav.swiperight(function(event, touch) {
+            return $(document).trigger("nav-open");
+        });
+        nav.swipeleft(function(event, touch) {
+            return $(document).trigger("nav-close");
+        });
+        nav_toggler.on("click", function() {
+            if (nav_open) {
+                $(document).trigger("nav-close");
+            } else {
+                $(document).trigger("nav-open");
+            }
+            return false;
+        });
+        $(document).bind("nav-close", function(event, params) {
+            body.removeClass("main-nav-opened").addClass("main-nav-closed");
+            return nav_open = false;
+        });
+        return $(document).bind("nav-open", function(event, params) {
+            body.addClass("main-nav-opened").removeClass("main-nav-closed");
+            return nav_open = true;
+        });
+    }
+
+    $.extend(app, {
+        noSessionHandler: function () {
+            $spa && $spa.alert('请登录', '您未登录或会话已过期', function () {
+                window.location = 'login.html';
+            });
+        },
+        jsonAPIErrorHandler: function (msg) {
+            $spa && $spa.error(msg);
+        }
+    });
+
+    window.logout = function () {
+        function _doLogout() {
+            jsonAPI.rest('/BASIC/logout', {}, function () {
+                window.location = 'login.html';
+            });
+        }
+
+        $spa.confirm('管理员登出', '您确定要登出吗?', _doLogout);
+    };
+
+
+
+
+
+
+//SPA实现
+    var SPA_IMPL = {
+        amAlert: function (title, text, cb) {
+            cb = cb || function () {
+            };
+            $('#_alert [title]').text(title);
+            $('#_alert [text]').text(text);
+            $('#_alert [close]').hide();
+            $('#_alert [primary]').one('click',function(){
+                $('#_alert').modal('hide');
+            });
+            $('#_alert').one('hidden',function(){
+                cb&&cb();
+            })
+            $('#_alert').modal();
+
+        },
+
+        amError: function (msg, cb) {
+            this.amAlert('错误', msg, cb);
+        },
+
+        amMessage: function (msg, cb) {
+            this.amAlert('消息', msg, cb);
+        },
+
+        amUploadImmediately: function (trigger, input, accept, data) {
+            accept = accept || 'image/*';
+            var arg = {};
+            if (typeof data == 'function') {
+                arg = data() || {};
+            }
+            else {
+                arg = data || {};
+            }
+            return new Uploader({
+                trigger: trigger,
+                name: 'file',
+                action: '/upload',
+                accept: accept,
+                data: arg,
+                multiple: false,
+                error: function (xhr, err, msg) {
+                    if (xhr.status == 413) {
+                        msg = '上传文件错误,原因:文件太大!'
+                    }
+                    $.AMUI.progress.done();
+                    amError(msg || '文件上传错误');
+                },
+                success: function (response) {
+                    $.AMUI.progress.done();
+                    if (jsonAPI.isSuccess(null, response)) {
+                        var o = $(input);
+                        if (o.is('input') || o.is('textarea')) {
+                            o.val(response.result.file.uri);
+                        }
+                        else if (o.is('img')) {
+                            o.attr('src', response.result.file.uri);
+                        }
+                        else if (o.is('a')) {
+                            o.attr('href', response.result.file.uri);
+                            o.text(response.result.file.filename);
+                        }
+                        else {
+                            $(input).text(response.result.file.uri);
+                        }
+                    }
+                    else {
+                        amError('文件上传失败：' + response.msg);
+                    }
+                },
+                progress: function (event, position, total, percent, files) {
+                    $.AMUI.progress.start();
+                }
+            });
+        },
+
+        amUpload: function (accept, data, confirmCallback, successCallback) {
+            var me = this;
+            if (arguments.length == 1) {
+                accept = null;
+                data = {};
+                confirmCallback = arguments[0];
+                successCallback = null;
+            }
+            else if (arguments.length == 2) {
+                accept = null;
+                data = {};
+                confirmCallback = arguments[0];
+                successCallback = arguments[1];
+            }
+            else if (arguments.length == 3) {
+                accept = arguments[0];
+                data = {};
+                confirmCallback = arguments[1];
+                successCallback = arguments[2];
+            }
+            accept = accept || 'image/*';
+            var arg = {};
+            if (typeof data == 'function') {
+                arg = data() || {};
+            }
+            else {
+                arg = data || {};
+            }
+            if (successCallback === 'close') {
+                $('#_upload').modal('close');
+            }
+            $('#_upload').one('opened.modal.amui', function () {
+                //初始化文件上传的uploader
+                var uploader = new Uploader({
+                    trigger: '#_upload_uploadBtn',
+                    name: 'file',
+                    action: '/upload',
+                    accept: accept,
+                    data: arg,
+                    multiple: false,
+                    error: function (file) {
+                        if (xhr.status == 413) {
+                            msg = '上传文件错误,原因:文件太大!'
+                        }
+                        $.AMUI.progress.done();
+                        amError(msg || '文件上传错误');
+                    },
+                    success: function (response) {
+                        if (jsonAPI.isSuccess(null, response)) {
+                            $('#_upload [progress]').html('文件上传成功：<span id="_upload_file_url">' + response.result.file.uri + '</span>');
+                            successCallback && successCallback(response.result.file.uri);
+                        }
+                        else {
+                            $('#_upload [progress]').html('文件上传失败：<span class="text-danger">' + response.msg + '</span>');
+                        }
+                    },
+                    progress: function (event, position, total, percent, files) {
+                        $('#_upload [progress]').show();
+                        var tpl = $('#_tplUploadProgress').val();
+                        var html = mustache.render(tpl, {percentage: percent});
+                        $('#_upload [progress]').html(html);
+                    }
+                });
+            });
+            $('#_upload [progress]').html('');
+            me.doConfirm('#_upload', function () {
+                var uri = $('#_upload_file_url').text();
+                //TODO 关闭时将此uri自动复制到剪切板
+                confirmCallback && confirmCallback(uri);
+            });
+        },
+
+        destroyUploader: function (uploader) {
+            if (!uploader) return;
+            try {
+                uploader._uploaders[0].form.
+
+
+                        remove();
+                uploader._uploaders[0].iframe.remove();
+            } catch (e) {
+            }
+        },
+
+        amConfirm: function (title, text, cbConfirm, cbCancel) {
+            $('#_confirm [title]').text(title);
+            $('#_confirm [text]').text(text);
+            var $confirm = $('#_confirm');
+            var $confirmBtn = $confirm.find('[data-am-modal-confirm]');
+            var $cancelBtn = $confirm.find('[data-am-modal-cancel]');
+            var fnConfirm = function () {
+                cbConfirm && cbConfirm();
+            };
+            var fnCancel = function () {
+                cbCancel && cbCancel();
+            };
+            $confirmBtn.off('click.confirm.modal.amui').one('click', fnConfirm);
+            $cancelBtn.off('click.cancel.modal.amui').one('click', fnCancel);
+            $('#_confirm').modal({closeViaDimmer: false});
+            $('#_confirm').one('closed.modal.amui', function () {
+                $confirmBtn.off('click', fnConfirm);
+                $cancelBtn.off('click', fnCancel);
+            });
+        },
+
+        doConfirm: function (selector, cbConfirm, cbCancel) {
+            var $confirm = $(selector);
+            var $confirmBtn = $confirm.find('[data-am-modal-confirm]');
+            var $cancelBtn = $confirm.find('[data-am-modal-cancel]');
+            var fnConfirm = function () {
+                cbConfirm && cbConfirm();
+            };
+
+            var fnCancel = function () {
+                cbCancel && cbCancel();
+            };
+
+            $confirmBtn.off('click.confirm.modal.amui').one('click', fnConfirm);
+            $cancelBtn.off('click.cancel.modal.amui').one('click', fnCancel);
+            $(selector).modal({closeViaDimmer: false});
+            $(selector).one('closed.modal.amui', function () {
+                $confirmBtn.off('click', fnConfirm);
+                $cancelBtn.off('click', fnCancel);
+            });
+        },
+
+        getPagingHTML: function (paging, queryFunctionName) {
+            var linkNums = 5;
+            paging.callback = queryFunctionName || '$module.query';
+            function _calculateGroup(pageNum, totalPage) {
+                var group = [];
+                var x = pageNum % linkNums;
+                x = x == 0 ? linkNums : x;
+                var begin = pageNum - x + 1;
+                begin = begin <= 0 ? 1 : begin;
+                for (var i = 0; i < linkNums; i++) {
+                    if ((begin + i) <= totalPage) {
+                        group.push(begin + i);
+                    }
+                }
+                return group;
+            }
+            var group = _calculateGroup(paging.page, paging.pages);
+            paging.view = {};
+            if (group[0] > linkNums) {
+                paging.view.ppre = '' + (group[0] - linkNums);
+            }
+
+            for (var i = 0; i < group.length; i++) {
+                paging.view['p' + i] = '' + group[i];
+                if (group[i] == paging.page) {
+                    paging.view['pc' + i] = 'current';
+                }
+            }
+
+            if (group[linkNums - 1] < paging.pages) {
+                paging.view.pnext = '' + (group[linkNums - 1] + 1);
+            }
+            var tpl = $('#_tpl_pagination').val();
+            mustache.parse(tpl);
+            return mustache.render(tpl, paging);
+        }
+    };
+
+    spa.launch({
+        spaDashboard: {        //参考: spa-dashboard-interface.js接口, 这里应该是它的一个实现类的实例
+            getVersion: function () {
+                return '0.1';
+            },
+            alert: function (title, text, cb) {
+          //      alert('alert');
+                cb = cb || function () {
+                };
+                $('#_alert [title]').text(title);
+                $('#_alert [text]').text(text);
+                $('#_alert [close]').hide();
+                $('#_alert [primary]').one('click',function(){
+               //     alert('hide');
+                    $('#_alert').modal('hide');
+                });
+                $('#_alert').one('hidden.bs.modal',function(){
+                    $('#_alert [primary]').unbind('click');
+                    cb&&cb();
+                })
+                $('#_alert').modal({backdrop:'static'});
+
+            },
+
+            error: function (msg, cb) {
+                this.alert('错误',msg, cb);
+            },
+
+            message: function (msg, cb) {
+                this.alert('消息',msg, cb);
+            },
+
+            createUploader: function (trigger, input,successCallback,onProgress, accept, data) {
+                    accept = accept || 'image/*';
+                    var arg = {};
+                    if (typeof data == 'function') {
+                        arg = data() || {};
+                    }
+                    else {
+                        arg = data || {};
+                    }
+                    var uploader= new Uploader({
+                        trigger: trigger,
+                        name: 'file',
+                        action: '/upload',
+                        accept: accept,
+                        data: arg,
+                        multiple: false,
+                        error: function (xhr, err, msg) {
+                            if (xhr.status == 413) {
+                                msg = '上传文件错误,原因:文件太大!'
+                            }
+                           // $.AMUI.progress.done();
+                            this.alert(msg || '文件上传错误');
+                        },
+                        success: function (response) {
+                          //  $.AMUI.progress.done();
+                            if (jsonAPI.isSuccess(null, response)) {
+                                var o = $(input);
+                                if(successCallback)
+                                {
+                                     successCallback(response.result);
+                                }
+                                else {
+                                    if (o.is('input') || o.is('textarea')) {
+                                        o.val(response.result.file.uri);
+                                    }
+                                    else if (o.is('img')) {
+                                        o.attr('src', response.result.file.uri);
+                                    }
+                                    else if (o.is('a')) {
+                                        o.attr('href', response.result.file.uri);
+                                        o.text(response.result.file.filename);
+                                    }
+                                    else {
+                                        $(input).text(response.result.file.uri);
+                                    }
+                                }
+                            }
+                            else {
+                                this.alert('文件上传失败：' + response.msg);
+                            }
+                        },
+                        progress: function (event, position, total, percent, files) {
+                            onProgress&&onProgress(percent);
+                        }
+                    });
+                uploader.__spa_type__ = 'UPLOADER';
+                return uploader;
+            },
+
+            createDatetimePicker: function (input, cfg) {
+                var pickerId = '_dtp_' + new Date().getTime() + (Math.random() * 1000).toFixed(0);
+                var obj = {
+                    __spa_type__: 'DATETIMEPICKER',
+                    id: pickerId
+                };
+                var dptCfg = $.datetimepickerConfig(pickerId);
+                cfg && $.extend(dptCfg, cfg);
+                $(input).datetimepicker(dptCfg);
+                return obj;
+            },
+
+            upload: function (accept, data, confirmCallback, successCallback) {
+                SPA_IMPL.amUpload(accept, data, confirmCallback, successCallback);
+            },
+
+            destroy: function (object) {
+                if (!object) return this;
+                switch (object.__spa_type__) {
+                    case 'UPLOADER' :
+                    {
+                        try {
+                            object._uploaders[0].form.remove();
+                            object._uploaders[0].iframe.remove();
+                        } catch (e) {
+                        }
+                        break;
+                    }
+                    case 'DATETIMEPICKER':
+                    {
+                        $('#' + object.id).remove();
+                        break;
+                    }
+                }
+                return this;
+            },
+
+            confirm: function (title, text, cbConfirm, cbCancel) {
+
+                $('#_alert [title]').text(title);
+                $('#_alert [text]').text(text);
+                $('#_alert [close]').show();
+                var _isConfirm;
+                $('#_alert [primary]').one('click',function(){
+                    _isConfirm=true;
+                    $('#_alert').modal('hide');
+                });
+                $('#_alert').one('hidden.bs.modal',function(){
+                    $('#_alert [primary]').unbind('click');
+                    if(_isConfirm){
+                        cbConfirm&&cbConfirm();
+                    }
+                    else{
+                        cbCancel&&cbCancel();
+                    }
+                })
+                $('#_alert').modal({backdrop:'static'});
+            },
+
+            confirmEx: function (selector, cbConfirm, cbCancel) {
+                var _confirm=$(selector);
+                var _isConfirm;
+                _confirm.find('[primary]').one('click',function(){
+                    _isConfirm=true;
+                    $('#_alert').modal('hide');
+                });
+                _confirm.find('[close]').one('click',function(){
+                    _isConfirm=false;
+                })
+                $('#_alert').one('hidden',function(){
+                    if(_isConfirm){
+                        cbConfirm&&cbConfirm();
+                    }
+                    else{
+                        cbCancel&&cbCancel();
+                    }
+                })
+                $('#_alert').modal();
+                $('.modal-backdrop').unbind('click');
+            },
+
+            getPagingHTML: function (paging, queryFunctionName) {
+                return SPA_IMPL.getPagingHTML(paging, queryFunctionName);
+            },
+
+            getNavigatorHTML: function (navs) {
+                navs = navs || [];
+                if (navs.length == 0) {
+                    navs.push('首页:#home');
+                }
+                var html = '<div class="pull-left" >';
+                for (var i = 0; i < navs.length; i++) {
+                    var link = navs[i].split(':')[1];
+                    var text = navs[i].split(':')[0];
+                    if (i == 0) {
+                        html += '<strong class="text-primary text-lg"><a href="' + link + '">' + text + '</a></strong>';
+                    }
+                    else {
+                        if(link==undefined||link.length==0){
+                            html += '<small>' + text + '</small>';
+                        }else{
+                            html += '<small><a href="' + link + '">' + text + '</a></small>';
+                        }
+                    }
+                    if (i < navs.length - 1) {
+                        html += ' > ';
+                    }
+                }
+                html+='</div>';
+                return html;
+            },
+
+            setTitle: function (title) {
+                document.title = '教育局管理系统 - ' + title;
+            }
+        },
+        widgetHome: './widgets',
+        container: '#content',
+        routes: {
+        },
+        routesEx: [    //外部routes脚本, 支持与外部插件的SPA式集成
+        ],
+        beforeLoad: function (hash, widgetURL) {
+            //osop widget加载前触发，一般显示一个"加载中"遮罩
+
+        },
+        afterLoad: function (hash, widgetURL, flag) {
+            //osop widget加载完成后触发，一般隐藏遮罩显示面页
+
+        },
+        ignoreInitLoad: false
+    });
+//检查管理员登录
+    basic.loadSession(function (user) {
+   /*     var ADMIN_ROLE = [1];
+      if (!basic.isUserInRole(ADMIN_ROLE)) {
+            $spa.message('您登录的账号不是系统管理员账号，请重新登录', function () {
+                jsonAPI.rest('/BASIC/logout', {}, function () {
+                    window.location = 'login.html';
+                });
+            });
+            return;
+        }*/
+        window.$user = user;
+        //$('.user-name').text('欢迎您,管理员'+user.name);
+    //    $('.user-name').text('欢迎您,管理员');
+
+        //加载菜单
+
+      //  basic.getMenu(function(){ _setupNavEvents();});
+        _setupNavEvents();
+
+
+    }, app.noSessionHandler);
+});
+</script>
+<!-- 脚本区 END -->
+</body>
+</html>
