@@ -1,2 +1,1 @@
-# EasyNode
-## Full-stack javascript framework
+教育局管理系统
